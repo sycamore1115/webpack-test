@@ -1,0 +1,62 @@
+<html>
+  <body>
+    <div>
+      <input id='inp' value=''/>
+    </div>
+  </body>
+</html>
+
+<!-- 主要的点是当你需要一个初始值，但不希望它参与接下来的操作，那么用一个函数相当于给了一个块级作用域，然后其他操作用另一个函数当成返回值返回 -->
+
+<script>
+
+  // var timeout = null
+  // function changeInp(){
+  //   //防抖
+  //   var inp = document.getElementById('inp')
+  //   clearTimeout(timeout)
+  //   timeout = setTimeout(()=>{
+  //     console.log(inp.value)
+  //   },3000)
+  // }
+
+  // var inp = document.getElementById('inp')
+  // inp.addEventListener('input', _debounce(()=>{console.log(inp.value)},3000));
+  // //抽出防抖方法
+  // function _debounce(f,n){
+  //   var timeout = null
+  //   return ()=>{
+  //     clearTimeout(timeout)
+  //     timeout = setTimeout(f,n)
+  //   }
+  // }
+
+  // var canRun = true
+  // function changeInp(){
+  //   //节流
+  //   var inp = document.getElementById('inp')
+  //   if(canRun){
+  //     setTimeout(()=>{
+  //       console.log(inp.value)
+  //       canRun = true
+  //     },3000)
+  //   }
+  //   canRun = false
+  // }
+
+  var inp = document.getElementById('inp')
+  inp.addEventListener('input', _throttle(()=>{console.log(inp.value)},3000));
+  //抽出节流方法
+  function _throttle(f,n){
+    var canRun = true
+    return ()=>{
+      if(canRun){
+      setTimeout(()=>{
+        f()
+        canRun = true
+      },n)
+    }
+   canRun = false
+  }
+}
+</script>
