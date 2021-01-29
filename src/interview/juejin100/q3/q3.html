@@ -20,16 +20,17 @@
   //   },3000)
   // }
 
-  // var inp = document.getElementById('inp')
-  // inp.addEventListener('input', _debounce(()=>{console.log(inp.value)},3000));
-  // //抽出防抖方法
-  // function _debounce(f,n){
-  //   var timeout = null
-  //   return ()=>{
-  //     clearTimeout(timeout)
-  //     timeout = setTimeout(f,n)
-  //   }
-  // }
+  var inp = document.getElementById('inp')
+  inp.addEventListener('input', _debounce(()=>{console.log(inp.value)},3000));
+  //抽出防抖方法
+  function _debounce(f,n){
+    var timeout = null
+    console.log('111111111111')
+    return ()=>{
+      clearTimeout(timeout)
+      timeout = setTimeout(f,n)
+    }
+  }
 
   // var canRun = true
   // function changeInp(){
@@ -44,19 +45,19 @@
   //   canRun = false
   // }
 
-  var inp = document.getElementById('inp')
-  inp.addEventListener('input', _throttle(()=>{console.log(inp.value)},3000));
-  //抽出节流方法
-  function _throttle(f,n){
-    var canRun = true
-    return ()=>{
-      if(canRun){
-      setTimeout(()=>{
-        f()
-        canRun = true
-      },n)
-    }
-   canRun = false
-  }
-}
+//   var inp = document.getElementById('inp')
+//   inp.addEventListener('input', _throttle(()=>{console.log(inp.value)},3000));
+//   //抽出节流方法
+//   function _throttle(f,n){
+//     var canRun = true
+//     return ()=>{
+//       if(canRun){
+//       setTimeout(()=>{
+//         f()
+//         canRun = true
+//       },n)
+//     }
+//    canRun = false
+//   }
+// }
 </script>

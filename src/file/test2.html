@@ -1,1 +1,32 @@
-<!-- 一、传统形式 -->
+<!-- 一、传统form表单形式2 -->
+<form method="POST" action="http://dd-test-server.51jk.com/web/upload/uploadPic" enctype="multipart/form-data" id='f1'>
+  <input type="file" value="请选择文件" id='file1'/>
+  <input type="button"  onclick="return fileSubmit()" value="提交1"></input>
+</form>
+
+<script type="text/javascript">
+  function fileSubmit() {        
+    var form1 = document.getElementById('f1');   
+    console.log(form1)       
+    var file1 = document.getElementById('file1')
+    console.log(file1)
+    var file = document.getElementById('file1').value;  
+    console.log(file)
+    if (!file){  
+        alert("请选择要上传的图片!");  
+        return false;  
+    }  
+    if (file.lastIndexOf('.')==-1){      
+        alert("路径不正确!");  
+        return false;  
+    }  
+    var AllImgExt=".jpg|.jpeg|.gif|.bmp|.png|";  
+    var extName = file.substring(file.lastIndexOf(".")).toLowerCase();          
+    if(AllImgExt.indexOf(extName+"|")==-1){  
+        ErrMsg="该文件类型不允许上传。请上传 "+AllImgExt+" 类型的文件，当前文件类型为"+extName;  
+        alert(ErrMsg);  
+        return false;  
+    }  
+    form1.submit()
+  }
+</script>

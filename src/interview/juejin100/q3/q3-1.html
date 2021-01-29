@@ -1,0 +1,55 @@
+<html>
+  <div>
+    <button onclick="submitMsg()">提交</button>
+  </div>
+</html>
+
+<script>
+  // 快速点击,点击多少次输出多少次
+  // function submitMsg(){
+  //   console.log('1111111')
+  // }
+
+  //防抖和节流，传递参数，执行事件和等待时间
+  //1.防抖，触发事件后不会马上执行，等待期间若再次触发则取消前一次触发，即连续触发以最后一次触发执行
+  // let debounce = function _debounce(){
+  //   let timeID;
+  //   return (f,n)=>{
+  //     clearTimeout(timeID)
+  //     timeID = setTimeout(f,n)
+  //   }
+  // }()
+  // function submitMsg(){
+  //   debounce(()=>{
+  //     console.log('1111111')
+  //   },5000)
+  // }
+  //2.节流，触发事件后不会马上执行，等待期间若再次触发则不生效，即连续触发以第一次触发执行
+  // let flag = false
+  // function _throttle(f,n){
+  //   if(!flag){
+  //     flag = true
+  //     setTimeout(()=>{
+  //       f()
+  //       flag = false
+  //     },n)
+  //   }
+  // }
+  let throttle = function _throttle(){
+    let flag = false
+    return (f,n)=>{
+      if(!flag){
+        flag = true
+        setTimeout(()=>{
+          f()
+          flag = false
+        },n)
+      }
+    }
+  }()
+  function submitMsg(){
+    throttle(()=>{
+      console.log('2222222')
+    },5000)
+  }
+</script>

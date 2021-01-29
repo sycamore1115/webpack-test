@@ -1,10 +1,7 @@
-<!-- 一、传统form表单形式 -->
-<form id="upload-form" action="http://test.com/web/upload/uploadPic" method="post" enctype="multipart/form-data" >
-  <input/> 
-  <br /> <br />
-  <input type="file" id="upload" name="upload" /> 
-  <br /> <br />
-  <input type="submit" value="Upload" />
+<!-- 一、传统form表单形式1 -->
+<form method="POST" action="http://dd-test-server.51jk.com/web/upload/uploadPic" enctype="multipart/form-data">
+  <input type="file" value="请选择文件" />
+  <button type="submit">提交</button>
 </form>
 
 <!-- 
@@ -18,3 +15,6 @@
     text/plain  空格转换为 "+" 加号，但不对特殊字符编码。 (若表单中有文件，则只留文件名)
   4.submit：提交form表单  （触发form表单的submit事件）
  -->
+
+
+ <!-- 实际需求一般需要我们在当前页面接收返回的数据，明确告诉用户上传是否成功，很多情况下还需要把上传的文件回显出来（比如图片或者音频资源），因此，我们必须在当前页面处理上传结果。 -->
