@@ -25,9 +25,9 @@
 //2.lodash _.cloneDeep(object)
 
 //3.手写深拷贝（递归）
-// let data = {name:"phoeny",age:25,likes:['math','music','sports'],pets:{dog:{name:'ww',age:3},cat:{name:'mm',age:1}},sayName(){console.log('hello')}}
+let data = {name:"phoeny",age:25,likes:['math','music','sports'],pets:{dog:{name:'ww',age:3},cat:{name:'mm',age:1}},sayName(){console.log('hello')}}
 
-//第一版
+// 第一版
 // function cloneDeep1(data){
 //   let copy
 //   if(Array.isArray(data)){
@@ -51,6 +51,19 @@
 //   }
 //   return copy
 // }
+
+// let copy = cloneDeep1(data)
+// console.log(copy)
+// copy.name = 'book'
+// copy.likes.push('paint')
+// copy.pets.dog.name= 'oo'
+// copy.sayName = function sayName(){console.log('hello copy')}
+// console.log("原件————————————————————————————————————————")
+// console.log(data)
+// data.sayName()
+// console.log("复印件————————————————————————————————————————")
+// console.log(copy)
+// copy.sayName()
 // //第二版：合并统一代码
 // function cloneDeep2(data){
 //   let copy
@@ -109,20 +122,24 @@ function isObj(data){
 // console.log(copy)
 // copy.sayName()
 
-//缺点：不能包含循环引用 用weakMap去存储已经拷贝过的值
-function cloneDeep5(data){
-  let copy = Array.isArray(data) ? [] : {}
-  for(const [key,value] of Object.entries(data)){
-    if(typeof value == 'object'){
-      copy[key] = cloneDeep4(value)
-    }else if(typeof value == 'function'){
-      copy[key] = eval('(' + value.toString() + ')')
-    }else{
-      copy[key] = value
+//缺点：不能包含循环引用 用数组存储已经拷贝过的值先进行判断
+  function cloneDeep5(data,arr = []){
+    if(arr.includes(data)){
+      return data
     }
-  }
-  return copy
-  }
+    let copy = Array.isArray(data) ? [] : {}
+    arr.push(data)
+    for(const [key,value] of Object.entries(data)){
+      if(typeof value == 'object'){
+        copy[key] = cloneDeep5(value,arr)
+      }else if(typeof value == 'function'){
+        copy[key] = eval('(' + value.toString() + ')')
+      }else{
+        copy[key] = value
+      }
+    }
+    return copy
+    }
 
 let pheony = {name:"phoeny",age:25,likes:['math','music','sports'],sayName:function(){console.log('hello')}}
 pheony.friend = pheony

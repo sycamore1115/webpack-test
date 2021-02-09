@@ -13,7 +13,7 @@ let a = {name:"phoeny",age:25,likes:['math','music','sports']}
 
 //3.lodash _.clone(object)
  
-//3.自己实现浅拷贝 一层遍历赋值即可
+//4.自己实现浅拷贝 一层遍历赋值即可
 function lightCopy(data){
   let copy = {}
   for(const [key,value] of Object.entries(data)){
@@ -23,8 +23,8 @@ function lightCopy(data){
 }
 
 let b = lightCopy(a)
-// b.name = 'book'
-// b.likes.push('read')
+b.name = 'book'
+b.likes.push('read')
 console.log('a:',a)
 console.log('b:',b)
 
