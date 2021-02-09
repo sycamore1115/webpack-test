@@ -12,6 +12,48 @@
 
   //防抖和节流，传递参数，执行事件和等待时间
   //1.防抖，触发事件后不会马上执行，等待期间若再次触发则取消前一次触发，即连续触发以最后一次触发执行
+  // let timeid
+  // function submitMsg(){
+  //   clearTimeout(timeid)
+  //   timeid = setTimeout(()=>{
+  //     console.log('11111111')
+  //   },5000)
+  // }
+
+  // let timeid
+  // function debounce(f,n){
+  //   clearTimeout(timeid)
+  //   timeid = setTimeout(f,n)
+  // }
+
+// let debounce1 = function debounce(){
+//   // console.log('99999999')
+//   let timeid
+//   return (f,n)=>{
+//     clearTimeout(timeid)
+//     timeid = setTimeout(f,n)
+//   }
+// }()
+
+
+//   function submitMsg(){
+//     debounce1(()=>{
+//       console.log('11111111')
+//     },5000)
+//   }
+
+
+
+
+  // function submitMsg(){
+  //   let timeid
+  //   clearTimeout(timeid)
+  //   timeid = setTimeout(()=>{
+  //     console.log('1111111')
+  //   },5000)
+  // }
+
+
   // let debounce = function _debounce(){
   //   let timeID;
   //   return (f,n)=>{
@@ -24,6 +66,7 @@
   //     console.log('1111111')
   //   },5000)
   // }
+
   //2.节流，触发事件后不会马上执行，等待期间若再次触发则不生效，即连续触发以第一次触发执行
   // let flag = false
   // function _throttle(f,n){
@@ -35,6 +78,12 @@
   //     },n)
   //   }
   // }
+  // function submitMsg(){
+  //   _throttle(()=>{
+  //     console.log('2222222')
+  //   },5000)
+  // }
+
   let throttle = function _throttle(){
     let flag = false
     return (f,n)=>{
